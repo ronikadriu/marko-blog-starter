@@ -1,0 +1,20 @@
+<await($global.articlesPromise)>
+  <@placeholder>
+  <span class="loading">
+    <ebay-progress-spinner size="large" aria-label="busy" />  
+  </span>
+  </@placeholder>
+  <@then|result|>
+    <div class="container">
+      <main>
+        <div class="uk-container">
+          <h2>Recent posts</h2>
+          <articles articles=result />
+        </div>
+      </main>
+    </div>
+  </@then>
+  <@catch>
+    <div>Error loading articles</div>
+  </@catch>
+</await>

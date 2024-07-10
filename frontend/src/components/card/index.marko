@@ -1,0 +1,43 @@
+import { Article, Data } from "../../types/interfaces";
+import { getStrapiMedia } from "../../api";
+
+export interface Input {
+  model: Data<Article>;
+}
+$ const { attributes } = input.model;
+<div class="card uk-card">
+    <a class="uk-link-reset" href=`/${attributes.slug}`>
+        <div class="uk-card-media-top">
+            <img src=getStrapiMedia(attributes.cover)
+            alt="Marko" 
+            class="article-cover uk-margin-medium-bottom">
+        </div>
+        <div class="uk-article">
+            <span class="uk-badge uk-text-uppercase">
+                ${attributes.category.data.attributes.name}
+            </span>
+            <h3 class="uk-margin-top"><b>${attributes.title}</b></h3>
+            <div class="uk-article-meta meta">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                    <div class="uk-width-auto">
+                        <img class="uk-border-circle" width="40" height="40" src=getStrapiMedia(attributes.author.data.attributes.avatar) alt="Avatar">
+                    </div>
+                    <div class="uk-width-expand">
+                        <h4 class="uk-margin-remove-bottom">${attributes.author.data.attributes.name}</h4>
+                        <p class="uk-text-meta uk-margin-remove-top">
+                            <time datetime=attributes.publishedAt>
+                                ${new Date(attributes.publishedAt).toDateString()}
+                            </time>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p class="uk-text-lead">
+                ${attributes.description}
+            </p>
+            <p>
+                <a href=`/${attributes.slug}`>Read more</a>
+            </p>
+        </div>
+    </a>
+</div>
