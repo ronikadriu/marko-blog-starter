@@ -1,13 +1,16 @@
 <await($global.articlesPromise)>
   <@placeholder>
-  <span class="loading">
-    <ebay-progress-spinner size="large" aria-label="busy" />  
-  </span>
+    <span class="loading">
+      <ebay-progress-spinner size="large" aria-label="busy"/>
+
+    </span>
   </@placeholder>
   <@then|result|>
     <div class="uk-container ">
-      <h2 class="uk-margin-medium-top">Recent posts</h2>
-      <articles articles=result />
+      <h2 class="uk-margin-medium-top">
+        Recent posts
+      </h2>
+      <articles articles=result/>
     </div>
   </@then>
   <@catch>

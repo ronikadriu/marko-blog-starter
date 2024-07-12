@@ -4,6 +4,7 @@ import { getStrapiMedia } from "../../api";
 export interface Input {
   model: Data<Article>;
 }
+
 $ const { attributes } = input.model;
 <div class="card uk-card">
     <a class="uk-link-reset" href=`/${attributes.slug}`>

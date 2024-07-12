@@ -1,3 +1,19 @@
+import { DataAttributes, Data, Image } from "../../types/interfaces";
+
+export interface Input {
+  section: {
+    title: string;
+    alternativeText: string;
+    __component: string;
+    body: string;
+    file: DataAttributes<Image>
+    files: {
+        data: Data<Image>[];
+    }
+  }
+  index: string;
+}
+
 <if(input.section.__component === "shared.rich-text")>
     <rich-text key=input.index model=input.section/>
 </if>

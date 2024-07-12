@@ -1,4 +1,13 @@
 import { getStrapiMedia } from "../../api";
+import { DataAttributes, Image } from "../../types/interfaces";
+
+
+export interface Input {
+  model: {
+    file: DataAttributes<Image>;
+    alternativeText: string;
+  }
+}
 
 <div class="uk-text-center">
     <img src=getStrapiMedia(input.model.file)

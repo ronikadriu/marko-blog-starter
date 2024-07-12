@@ -1,14 +1,17 @@
 <await($global.categoryWithArticles)>
   <@placeholder>
-  <span class="loading">
-    <ebay-progress-spinner size="large" aria-label="busy" />  
-  </span>
+    <span class="loading">
+      <ebay-progress-spinner size="large" aria-label="busy"/>
+
+    </span>
   </@placeholder>
   <@then|result|>
     $ const category = result[0];
     <div class="uk-container">
-      <h2 class="uk-text-capitalize uk-margin-medium-top">${category.attributes.name}</h2>
-      <articles articles=category.attributes.articles.data />
+      <h2 class="uk-text-capitalize uk-margin-medium-top">
+        ${category.attributes.name}
+      </h2>
+      <articles articles=(category.attributes.articles.data)/>
     </div>
   </@then>
   <@catch>

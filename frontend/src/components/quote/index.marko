@@ -1,8 +1,16 @@
+export interface Input {
+  model: {
+    title: string;
+    body: string;
+  }
+}
+
 style {
     .quote svg{
         width: 20px;
     }
 }
+
 <div class="quote uk-flex uk-flex-column uk-flex-center">
     <if(input.model.title)>
         <h2 class="uk-heading-small">${input.model.title}</h2>

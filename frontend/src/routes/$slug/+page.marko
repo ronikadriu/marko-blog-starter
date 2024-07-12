@@ -1,51 +1,63 @@
-import { getStrapiMedia } from '../../api';
+import { getStrapiMedia } from "../../api";
 
 <await($global.articlesPromise)>
-  <@placeholder>
-  <span class="loading">
-    <ebay-progress-spinner size="large" aria-label="busy" />  
-  </span>
-  </@placeholder>
-  <@then|result|>
-    $ const article = result[0];
-    $ const imageUrl = getStrapiMedia(article.attributes.cover);
-    <div
-    id="banner"
-    class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding uk-margin"
-    data-src=imageUrl
-    uk-img
-    >
-        <h1>${article.attributes.title}</h1>
-    </div>
-    <div class="uk-section">
-        <div class="uk-container uk-container-small">
-            <div class="uk-flex uk-flex-column">
-                <for|section,index| of=article.attributes.blocks>
-                    <div class="uk-margin-medium-bottom">
-                        <section section=section index=index />
-                    </div>
-                </for>
-            </div>
-            <hr class="uk-divider-small" />
-            <div class="uk-grid-small uk-flex-left" uk-grid>
-                <div>
-                    <img class="uk-border-circle" width="40" height="40" src=getStrapiMedia(article.attributes.author.data.attributes.avatar) alt="Author">
+    <@placeholder>
+        <span class="loading">
+            <ebay-progress-spinner size="large" aria-label="busy"/>
+
+        </span>
+    </@placeholder>
+    <@then|result|>
+        $ const article = result[0];
+        $ const imageUrl = getStrapiMedia(article.attributes.cover);
+        <div
+            id="banner"
+            class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding uk-margin"
+            data-src=imageUrl
+            uk-img
+        >
+            <h1>${article.attributes.title}</h1>
+        </div>
+        <div class="uk-section">
+            <div class="uk-container uk-container-small">
+                <div class="uk-flex uk-flex-column">
+                    <for|section, index| of=(article.attributes.blocks)>
+                        <div class="uk-margin-medium-bottom">
+                            <section section=section index=index/>
+                        </div>
+                    </for>
                 </div>
-                <div class="uk-width-expand">
-                <p class="uk-margin-remove-bottom">
-                    By ${article.attributes.author.data.attributes.name}
-                </p>
-                <p class="uk-text-meta uk-margin-remove-top">
-                    <time datetime=article.attributes.publishedAt.toString()>
-                        ${new Date(article.attributes.publishedAt).toDateString()}
-                    </time>
-                </p>
+                <hr class="uk-divider-small">
+                <div class="uk-grid-small uk-flex-left" uk-grid>
+                    <div>
+                        <img
+                            class="uk-border-circle"
+                            width="40"
+                            height="40"
+                            src=getStrapiMedia(
+                                article.attributes.author.data.attributes
+                                    .avatar,
+                            )
+                            alt="Author"
+                        >
+                    </div>
+                    <div class="uk-width-expand">
+                        <p class="uk-margin-remove-bottom">
+                            By ${article.attributes.author.data.attributes.name}
+                        </p>
+                        <p class="uk-text-meta uk-margin-remove-top">
+                            <time datetime=article.attributes.publishedAt.toString()>
+                                ${new Date(
+                                    article.attributes.publishedAt,
+                                ).toDateString()}
+                            </time>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-  </@then>
-  <@catch>
-    <div>Error loading articles</div>
-  </@catch>
+    </@then>
+    <@catch>
+        <div>Error loading articles</div>
+    </@catch>
 </await>
