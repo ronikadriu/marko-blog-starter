@@ -6,13 +6,13 @@
   "author": "ronikadriu <fkadriu@ebay.com>",
   "license": "MIT",
   "scripts": {
-    "frontend": "yarn dev --prefix ../frontend/",
-    "backend": "yarn develop --prefix ../backend/",
+    "frontend": "cd frontend && yarn dev",
+    "backend": "cd backend && yarn develop",
     "clear": "cd frontend && rm -rf .dist",
     "setup:frontend": "cd frontend && yarn",
     "setup:backend": "cd backend && yarn",
     "setup": "yarn install && yarn setup:frontend && yarn setup:backend",
-    "dev": "yarn clear && concurrently \"cd frontend && yarn dev\" \"cd backend && yarn develop\"",
+    "dev": "concurrently \"cd frontend && yarn dev\" \"cd backend && yarn develop\"",
     "export": "cd backend && yarn strapi export --no-encrypt -f ../seed-data",
     "repo:upstream": "git fetch upstream && git merge upstream/main"
   }
