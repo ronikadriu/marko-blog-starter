@@ -1,0 +1,15 @@
+<if(input.section.__component === "shared.rich-text")>
+    <rich-text key=input.index model=input.section/>
+</if>
+<else-if (input.section.__component === "shared.quote")>
+    <quote key=input.index model=input.section/>
+</else-if>
+<else-if (input.section.__component === "shared.media")>
+    <media key=input.index model=input.section/>
+</else-if>
+<else-if (input.section.__component === "shared.slider")>
+    <slider key=input.index model=input.section/>
+</else-if>
+<else>
+    <${input.section.body} />
+</else>

@@ -4,23 +4,34 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
-    "marko": "^5.33.5",
-    "qs": "^6.12.3"
+    "marko": "^5.33.5"
   },
   "devDependencies": {
     "@ebay/ebayui-core": "^14.0.0",
     "@ebay/skin": "^18.0.2",
     "@marko/run": "^0.4.3",
+    "@marko/type-check": "^1.1.7",
     "@marko/vite": "^4.1.12",
+    "@types/qs": "^6.9.15",
+    "@types/uikit": "^3.14.5",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "eslint": "8.57.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-testing-library": "^6.2.2",
     "less": "^4.2.0",
+    "sort-package-json": "^2.10.0",
     "typescript": "^5.5.3",
-    "vite": "^5.3.3"
+    "vite": "^5.3.3",
+    "vitest": "^2.0.1",
+    "qs": "^6.12.3"
   },
   "private": true,
   "scripts": {
     "dev": "marko-run",
     "build": "marko-run build",
     "preview": "marko-run preview",
-    "start": "node --enable-source-maps ./dist/index.mjs"
+    "start": "node --enable-source-maps ./dist/index.mjs",
+    "lint": "mtc && eslint -f checkstyle && sort-package-json --quiet --check"
   }
 }

@@ -20,6 +20,9 @@ export interface Category {
     name: string;
     slug: string;
     description: string;
+    articles: {
+        data: Data<Article>[];
+    }
 }
 
 export interface Image {
@@ -39,4 +42,15 @@ export interface DataAttributes<T> {
 export interface Data<T> {
     id: number;
     attributes: T;
+}
+
+export interface GlobalData {
+    siteName: string;
+    siteDescription: string;
+    defaultSeo: {
+        id: number;
+        metaTitle: string;
+        metaDescription: string;
+    }
+    favicon: DataAttributes<Image>;
 }

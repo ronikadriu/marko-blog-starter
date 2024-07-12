@@ -3,8 +3,7 @@ import { Article, Data, GlobalData } from "../../types/interfaces";
 
 declare module "@marko/run" {
     interface Context {
-        articlesPromise: Promise<Data<Article>[]>;
-        globalData: Data<GlobalData>;
+      articlesPromise: Promise<Data<Article>[]>;
     }
 }
 
@@ -15,12 +14,23 @@ export async function GET(context: MarkoRun.Context) {
         });
 
         context.articlesPromise = fetchAPI<Data<Article>[]>("/articles", {
-            populate: [
-                "author",
-                "author.avatar",
-                "category",
-                "cover"
-            ]
+            filters: {
+                slug: context.params.slug
+            },
+            populate: {
+                author: {
+                    populate: "*"
+                },
+                category: {
+                    populate: "*"
+                },
+                cover: {
+                    populate: "*"
+                },
+                blocks: {
+                    populate: "*"
+                }
+            }
         });
         
         context.globalData = globalResponse;

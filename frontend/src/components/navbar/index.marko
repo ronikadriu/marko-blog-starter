@@ -1,14 +1,15 @@
-<nav.nav>
-    <span.nav-brand><img src="../../public/logo.svg" alt="Marko" class="logo"></span>
+<nav class="nav">
+    <span.nav-brand>
+        <a class="uk-link-reset" href="/">
+            <img src="../../public/logo.svg" alt="Marko" class="logo">
+        </a>
+    </span>
     <ul.nav-menu>
-        <li.nav-item>
-            <a href="/">Home</a>
-        </li>
-        <li.nav-item>
-            <a href="/">About</a>
-        </li>
-        <li.nav-item>
-            <a href="/">Contact</a>
-        </li>
+        <for|category| of=state.categories>
+            $ const { attributes } = category;
+            <li.nav-item>
+                <a href=`/category/${attributes.slug}`>${attributes.name}</a>
+            </li>
+        </for>
     </ul>
 </nav>

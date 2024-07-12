@@ -18,14 +18,14 @@ $ const { attributes } = input.model;
             </span>
             <h3 class="uk-margin-top"><b>${attributes.title}</b></h3>
             <div class="uk-article-meta meta">
-            <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-grid-small uk-flex-middle" data-uk-grid>
                     <div class="uk-width-auto">
-                        <img class="uk-border-circle" width="40" height="40" src=getStrapiMedia(attributes.author.data.attributes.avatar) alt="Avatar">
+                        <img class="uk-border-circle" width="40" height="40" src=getStrapiMedia(attributes.author.data.attributes.avatar) alt="Author">
                     </div>
                     <div class="uk-width-expand">
                         <h4 class="uk-margin-remove-bottom">${attributes.author.data.attributes.name}</h4>
                         <p class="uk-text-meta uk-margin-remove-top">
-                            <time datetime=attributes.publishedAt>
+                            <time datetime=attributes.publishedAt.toString()>
                                 ${new Date(attributes.publishedAt).toDateString()}
                             </time>
                         </p>
