@@ -4,7 +4,6 @@ import { getStrapiMedia } from "../../api";
     <@placeholder>
         <span class="loading">
             <ebay-progress-spinner size="large" aria-label="busy"/>
-
         </span>
     </@placeholder>
     <@then|result|>
@@ -22,8 +21,11 @@ import { getStrapiMedia } from "../../api";
             <div class="uk-container uk-container-small">
                 <div class="uk-flex uk-flex-column">
                     <for|section, index| of=(article.attributes.blocks)>
-                        <div class="uk-margin-medium-bottom">
-                            <section section=section index=index/>
+                        <div
+                            key=`article-details-section_${index}`
+                            class="uk-margin-medium-bottom"
+                        >
+                            <section section=section/>
                         </div>
                     </for>
                 </div>

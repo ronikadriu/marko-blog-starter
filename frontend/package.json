@@ -16,15 +16,18 @@
     "@types/uikit": "^3.14.5",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "eslint": "8.57.0",
+    "eslint-config-prettier": "9",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-testing-library": "^6.2.2",
     "less": "^4.2.0",
+    "prettier": "3.0.3",
+    "prettier-plugin-marko": "3.0.1",
+    "qs": "^6.12.3",
     "sort-package-json": "^2.10.0",
     "typescript": "^5.5.3",
     "vite": "^5.3.3",
-    "vitest": "^2.0.1",
-    "qs": "^6.12.3"
+    "vitest": "^2.0.1"
   },
   "private": true,
   "scripts": {
@@ -32,6 +35,6 @@
     "build": "marko-run build",
     "preview": "marko-run preview",
     "start": "node --enable-source-maps ./dist/index.mjs",
-    "lint": "mtc && eslint -f checkstyle && sort-package-json --quiet --check"
+    "lint": "mtc && eslint -f checkstyle && prettier . --check --log-level=warn && sort-package-json --quiet --check"
   }
 }
