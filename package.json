@@ -15,5 +15,8 @@
     "dev": "concurrently \"cd frontend && yarn dev\" \"cd backend && yarn develop\"",
     "export": "cd backend && yarn strapi export --no-encrypt -f ../seed-data",
     "repo:upstream": "git fetch upstream && git merge upstream/main"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
   }
 }
